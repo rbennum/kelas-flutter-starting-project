@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:trinity_lecture_app/core/commons/constans.dart';
+import 'package:trinity_lecture_app/core/commons/constants.dart';
 import 'package:trinity_lecture_app/infrastructure/common/dtos/api_response_model.dart';
 import 'package:trinity_lecture_app/infrastructure/core/api_configuration.dart';
 import 'package:trinity_lecture_app/infrastructure/core/exceptions.dart';
