@@ -1,4 +1,4 @@
-package com.example.trinity_lecture_app
+package com.example.student_lecture_app
 
 import io.flutter.embedding.android.FlutterActivity
 

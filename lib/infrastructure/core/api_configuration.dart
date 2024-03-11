@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:trinity_lecture_app/infrastructure/common/dtos/api_response_model.dart';
-import 'package:trinity_lecture_app/infrastructure/core/exceptions.dart';
+import 'package:student_lecture_app/infrastructure/common/dtos/api_response_model.dart';
+import 'package:student_lecture_app/infrastructure/core/exceptions.dart';
 
 class ApiConfiguration {
   const ApiConfiguration._();

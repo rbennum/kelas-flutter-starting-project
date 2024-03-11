@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:trinity_lecture_app/core/env/env.dart';
-import 'package:trinity_lecture_app/core/routes/app_router.dart';
+import 'package:student_lecture_app/core/env/env.dart';
+import 'package:student_lecture_app/core/routes/app_router.dart';
 
 @module
 abstract class RegisterModule {

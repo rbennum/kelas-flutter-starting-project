@@ -33,7 +33,6 @@
 /build/
 /.git/
 /android/app/build/
-/.vscode/settings.json
 
 # ignore generated file
 **/*.g.dart

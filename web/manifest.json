@@ -1,6 +1,6 @@
 {
-    "name": "trinity_lecture_app",
-    "short_name": "trinity_lecture_app",
+    "name": "student_lecture_app",
+    "short_name": "student_lecture_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

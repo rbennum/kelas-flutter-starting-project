@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:trinity_lecture_app/core/commons/constants.dart';
+import 'package:student_lecture_app/core/commons/constants.dart';
 
 part 'article_model.freezed.dart';
 part 'article_model.g.dart';

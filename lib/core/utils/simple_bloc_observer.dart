@@ -2,7 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:trinity_lecture_app/core/injection/injection.dart';
+import 'package:student_lecture_app/core/injection/injection.dart';
 
 class SimpleBlocObserver extends BlocObserver {
   @override

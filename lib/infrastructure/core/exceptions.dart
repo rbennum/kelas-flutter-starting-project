@@ -1,4 +1,4 @@
-import 'package:trinity_lecture_app/infrastructure/common/dtos/api_response_model.dart';
+import 'package:student_lecture_app/infrastructure/common/dtos/api_response_model.dart';
 
 class ApiResponseException implements Exception {
   final ApiResponseModel model;

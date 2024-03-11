@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trinity_lecture_app/core/commons/colors_const.dart';
-import 'package:trinity_lecture_app/presentation/widgets/atoms/text_theme_extension.dart';
-import 'package:trinity_lecture_app/presentation/widgets/molecules/required_text.dart';
-import 'package:trinity_lecture_app/presentation/widgets/organisms/ui_helper.dart';
+import 'package:student_lecture_app/core/commons/colors_const.dart';
+import 'package:student_lecture_app/presentation/widgets/atoms/text_theme_extension.dart';
+import 'package:student_lecture_app/presentation/widgets/molecules/required_text.dart';
+import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
 
 class TextFormFieldCustom extends StatelessWidget {
   final TextInputType? keyboardType;

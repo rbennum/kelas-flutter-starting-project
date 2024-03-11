@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:trinity_lecture_app/domain/core/form_failure.dart';
+import 'package:student_lecture_app/domain/core/form_failure.dart';
 
 class FormValidator {
   FormValidator._();

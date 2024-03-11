@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trinity_lecture_app/presentation/widgets/atoms/platform_widget.dart';
-import 'package:trinity_lecture_app/presentation/widgets/organisms/ui_helper.dart';
+import 'package:student_lecture_app/presentation/widgets/atoms/platform_widget.dart';
+import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
 
 class PlatformAppBar extends PlatformWidget<CupertinoNavigationBar, AppBar> implements PreferredSizeWidget {
   final Widget title;

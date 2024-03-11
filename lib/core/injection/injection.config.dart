@@ -12,10 +12,10 @@ import 'package:dio/dio.dart' as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:logger/logger.dart' as _i5;
-import 'package:trinity_lecture_app/core/env/env.dart' as _i4;
-import 'package:trinity_lecture_app/core/routes/app_router.dart' as _i3;
-import 'package:trinity_lecture_app/core/utils/register_module.dart' as _i8;
-import 'package:trinity_lecture_app/infrastructure/core/api_helper.dart' as _i7;
+import 'package:student_lecture_app/core/env/env.dart' as _i4;
+import 'package:student_lecture_app/core/routes/app_router.dart' as _i3;
+import 'package:student_lecture_app/core/utils/register_module.dart' as _i8;
+import 'package:student_lecture_app/infrastructure/core/api_helper.dart' as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

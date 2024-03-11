@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:trinity_lecture_app/core/commons/colors_const.dart';
+import 'package:student_lecture_app/core/commons/colors_const.dart';
 
 class UIHelper {
   UIHelper._();
