@@ -1,4 +1,4 @@
-# trinity_lecture_app
+# starting_project
 
 A new Flutter project.
 
