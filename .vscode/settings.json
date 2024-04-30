@@ -1,9 +1,11 @@
 {
-  "dart.flutterSdkPath": "~/fvm/versions/3.16.3",
+  "dart.flutterSdkPath": ".fvm/versions/3.16.3",
   "java.configuration.updateBuildConfiguration": "interactive",
   "[dart]": {
     "editor.formatOnType": false,
-    "editor.rulers": [120],
+    "editor.rulers": [
+      120
+    ],
     "editor.selectionHighlight": true,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
@@ -18,5 +20,5 @@
       "source.fixAll": "explicit",
       "source.organizeImports": "explicit"
     }
-  },
+  }
 }
