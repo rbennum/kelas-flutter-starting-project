@@ -13,7 +13,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function(String?)? onChange;
   final String? title;
-  final Widget? preffixIcon;
+  final Widget? prefixIcon;
   final int? maxLines;
   final String? initialValue;
 
@@ -26,7 +26,7 @@ class TextFormFieldCustom extends StatelessWidget {
     this.textAlign,
     this.validator,
     this.title,
-    this.preffixIcon,
+    this.prefixIcon,
     this.maxLines,
     this.onChange,
     this.initialValue,
@@ -54,11 +54,12 @@ class TextFormFieldCustom extends StatelessWidget {
           onChanged: onChange,
           decoration: InputDecoration(
             prefixIconColor: ColorConstant.primary,
-            prefixIcon: preffixIcon,
+            prefixIcon: prefixIcon,
             prefixIconConstraints: BoxConstraints(minWidth: UIHelper.setSp(50)),
             hintText: hintText,
             contentPadding: UIHelper.padding(vertical: 15, horizontal: 10),
-            errorStyle: context.textTheme.bodySmall!.copyWith(color: Colors.red),
+            errorStyle:
+                context.textTheme.bodySmall!.copyWith(color: Colors.red),
             isDense: true,
             prefixStyle: context.textTheme.bodyLarge!,
             filled: true,
@@ -94,7 +95,8 @@ class TextFormFieldCustom extends StatelessWidget {
                 color: ColorConstant.grey.withOpacity(0.7),
               ),
             ),
-            hintStyle: context.textTheme.bodyLarge!.copyWith(color: ColorConstant.grey.withOpacity(0.7)),
+            hintStyle: context.textTheme.bodyLarge!
+                .copyWith(color: ColorConstant.grey.withOpacity(0.7)),
           ),
         ),
       ],

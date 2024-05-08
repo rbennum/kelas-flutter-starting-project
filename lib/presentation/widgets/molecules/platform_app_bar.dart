@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:student_lecture_app/presentation/widgets/atoms/platform_widget.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
 
-class PlatformAppBar extends PlatformWidget<CupertinoNavigationBar, AppBar> implements PreferredSizeWidget {
+class PlatformAppBar extends PlatformWidget<CupertinoNavigationBar, AppBar>
+    implements PreferredSizeWidget {
   final Widget title;
   final Widget? leading;
   final PreferredSizeWidget? bottom;
@@ -23,9 +24,13 @@ class PlatformAppBar extends PlatformWidget<CupertinoNavigationBar, AppBar> impl
   Size get preferredSize => Size.fromHeight(UIHelper.setSp(70));
 
   @override
-  CupertinoNavigationBar createIosWidget(BuildContext context) => CupertinoNavigationBar(
+  CupertinoNavigationBar createIosWidget(BuildContext context) =>
+      CupertinoNavigationBar(
         middle: title,
-        leading: leading,
+        leading: leading ??
+            IconButton(
+                onPressed: () => AutoRouter.of(context).pop(),
+                icon: const Icon(Icons.arrow_back_ios_new_rounded)),
       );
 
   @override

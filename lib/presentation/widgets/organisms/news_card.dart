@@ -17,7 +17,8 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: UIHelper.padding(vertical: 20, horizontal: 10),
+      padding: UIHelper.padding(all: 10),
+      margin: UIHelper.padding(bottom: 8),
       decoration: BoxDecoration(
         border: Border.all(
           color: ColorConstant.grey,
@@ -48,7 +49,7 @@ class NewsCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: context.textTheme.headlineSmall,
+                        style: context.textTheme.headlineMedium,
                       ),
                       UIHelper.verticalSpace(10),
                       Text(
