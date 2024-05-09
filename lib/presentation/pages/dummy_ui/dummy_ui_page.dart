@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_lecture_app/core/commons/colors_const.dart';
 import 'package:student_lecture_app/core/commons/constants.dart';
+import 'package:student_lecture_app/core/routes/app_router.gr.dart';
 import 'package:student_lecture_app/presentation/pages/dummy_ui/widgets/row_card.dart';
 import 'package:student_lecture_app/presentation/widgets/atoms/text_theme_extension.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/news_card.dart';
@@ -22,24 +23,28 @@ class DummyUIPage extends StatelessWidget {
           padding: UIHelper.padding(vertical: 10, horizontal: 20),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Next",
-                        style: context.textTheme.headlineLarge
-                            ?.copyWith(color: ColorConstant.primary)),
-                    Text(
-                      "Tab Bar, Grid View, List View",
-                      style: context.textTheme.bodyMedium
-                          ?.copyWith(color: ColorConstant.grey),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                const Icon(Icons.arrow_forward_ios)
-              ],
+            InkWell(
+              onTap: () =>
+                  AutoRouter.of(context).push(const DummyUIListRoute()),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Next",
+                          style: context.textTheme.headlineLarge
+                              ?.copyWith(color: ColorConstant.primary)),
+                      Text(
+                        "Tab Bar, Grid View, List View",
+                        style: context.textTheme.bodyMedium
+                            ?.copyWith(color: ColorConstant.grey),
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  const Icon(Icons.arrow_forward_ios)
+                ],
+              ),
             ),
             UIHelper.verticalSpace(20),
             Text(
