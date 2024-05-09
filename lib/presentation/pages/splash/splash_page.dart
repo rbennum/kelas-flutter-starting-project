@@ -15,6 +15,10 @@ class SplashPage extends StatelessWidget {
           "Dummy UI",
           "Practice Flutter UI and get familiar with UI Widgets",
           () => AutoRouter.of(context).push(const DummyUIRoute())),
+      SplashItem(
+          "Counter Example (State Management)",
+          "Introducing of state management using flutter_bloc. Level: 1",
+          () => AutoRouter.of(context).push(const CounterRoute()))
     ];
 
     return Scaffold(
