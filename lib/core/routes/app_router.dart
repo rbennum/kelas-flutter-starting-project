@@ -7,6 +7,7 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> routes = [
     AutoRoute(page: SplashRoute.page, initial: true),
     AutoRoute(page: DummyUIRoute.page),
-    AutoRoute(page: DummyUIListRoute.page)
+    AutoRoute(page: DummyUIListRoute.page),
+    AutoRoute(page: CounterRoute.page),
   ];
 }
