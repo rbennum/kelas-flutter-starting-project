@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_lecture_app/core/routes/app_router.gr.dart';
 import 'package:student_lecture_app/presentation/pages/splash/widgets/splash_item_card.dart';
+import 'package:student_lecture_app/presentation/widgets/molecules/action_text.dart';
 
 @RoutePage()
 class SplashPage extends StatelessWidget {
@@ -14,11 +15,11 @@ class SplashPage extends StatelessWidget {
       SplashItem(
           "Dummy UI",
           "Practice Flutter UI and get familiar with UI Widgets",
-          () => AutoRouter.of(context).push(const DummyUIRoute())),
+              () => AutoRouter.of(context).push(const DummyUIRoute())),
       SplashItem(
           "Counter Example (State Management)",
           "Introducing of state management using flutter_bloc. Level: 1",
-          () => AutoRouter.of(context).push(const CounterRoute()))
+              () => AutoRouter.of(context).push(const CounterRoute()))
     ];
 
     return Scaffold(
@@ -37,7 +38,7 @@ class SplashPage extends StatelessWidget {
             );
           },
           separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
+          const Divider(),
         ));
   }
 }
