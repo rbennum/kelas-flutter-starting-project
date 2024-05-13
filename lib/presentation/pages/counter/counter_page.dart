@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_lecture_app/presentation/pages/counter/model/counter_cubit.dart';
+import 'package:student_lecture_app/presentation/pages/counter/model/counter_state.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
 
 @RoutePage()
@@ -27,9 +28,9 @@ class CounterView extends StatelessWidget {
           title: const Text("Counter App"),
         ),
         body: Center(
-          child: BlocBuilder<CounterCubit, int>(
+          child: BlocBuilder<CounterCubit, CounterState>(
             builder: (context, state) {
-              return Text('$state');
+              return Text(state.entity.counter.toString());
             },
           ),
         ),
