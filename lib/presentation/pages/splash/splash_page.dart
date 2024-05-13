@@ -18,7 +18,12 @@ class SplashPage extends StatelessWidget {
       SplashItem(
           "Counter Example (State Management)",
           "Introducing of state management using flutter_bloc. Level: 1",
-              () => AutoRouter.of(context).push(const CounterRoute()))
+              () => AutoRouter.of(context).push(const CounterRoute())),
+      SplashItem(
+          "Input Validation Example (State Management)",
+          "Flutter state management using flutter_bloc to handle validation in text field. Level: 2",
+          () => AutoRouter.of(context).push(const InputValidationRoute())
+      )
     ];
 
     return Scaffold(
