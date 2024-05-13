@@ -1,8 +1,11 @@
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0);
+part 'counter_state.dart';
+part 'counter_cubit.freezed.dart';
 
-  void increment() => emit(state + 1);
-  void decrement() => emit(state - 1);
+class CounterCubit extends Cubit<CounterState> {
+  CounterCubit() : super(const CounterState.initial());
+
+  void get increment => emit(state.increment());
 }
