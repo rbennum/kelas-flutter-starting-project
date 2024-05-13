@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_lecture_app/core/routes/app_router.gr.dart';
 import 'package:student_lecture_app/presentation/pages/splash/widgets/splash_item_card.dart';
-import 'package:student_lecture_app/presentation/widgets/molecules/action_text.dart';
 
 @RoutePage()
 class SplashPage extends StatelessWidget {

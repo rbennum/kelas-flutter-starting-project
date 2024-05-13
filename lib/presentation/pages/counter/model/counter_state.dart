@@ -1,13 +1,19 @@
-part of 'counter_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:student_lecture_app/domain/counter/counter_entity.dart';
+
+part 'counter_state.freezed.dart';
 
 @freezed
 class CounterState with _$CounterState {
-  const factory CounterState.initial() = _Initial;
+  const CounterState._();
+  const factory CounterState({required CounterEntity entity}) = _CounterState;
 
-  final int counter;
+  factory CounterState.initial() => CounterState(entity: CounterEntity.initial());
 
-  CounterState({required this.counter});
-
-  CounterState increment() => counter + 1;
-  void decrement() => counter - 1;
+  CounterState get increment => CounterState(
+      entity: entity.copyWith(counter: entity.counter + 1)
+  );
+  CounterState get decrement => CounterState(
+      entity: entity.copyWith(counter: entity.counter - 1)
+  );
 }
