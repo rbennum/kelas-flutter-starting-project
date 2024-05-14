@@ -19,7 +19,8 @@ class ApiConfiguration {
     return model;
   }
 
-  static Future<ApiResponseModel> handleDioErrorResponse(DioException error) async {
+  static Future<ApiResponseModel> handleDioErrorResponse(
+      DioException error) async {
     switch (error.type) {
       case DioExceptionType.badResponse:
         if (ApiResponseModel.isFormatValid(error.response!.data)) {

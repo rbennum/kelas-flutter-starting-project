@@ -47,7 +47,8 @@ class AppTheme {
           }
           return ColorConstant.lightBlue; // Regular color
         }),
-        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(UIHelper.padding(vertical: 12, horizontal: 50)),
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+            UIHelper.padding(vertical: 12, horizontal: 50)),
         elevation: MaterialStateProperty.all<double>(0),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(
@@ -106,7 +107,8 @@ class AppTheme {
     titleMedium: GoogleFonts.poppins(fontSize: 18.sp),
     titleSmall: GoogleFonts.poppins(fontSize: 20.sp),
     bodySmall: GoogleFonts.poppins(fontSize: 12.sp),
-    labelLarge: GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.bold),
+    labelLarge:
+        GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.bold),
     labelMedium: GoogleFonts.poppins(fontSize: 12.sp),
     labelSmall: GoogleFonts.poppins(
       fontSize: 10.sp,

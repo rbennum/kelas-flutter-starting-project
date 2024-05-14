@@ -34,7 +34,10 @@ class SplashItemCard extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        const Icon(Icons.arrow_forward_ios_outlined, size: 24,)
+        const Icon(
+          Icons.arrow_forward_ios_outlined,
+          size: 24,
+        )
       ],
     );
   }

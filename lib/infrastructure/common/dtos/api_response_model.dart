@@ -61,7 +61,9 @@ class ApiResponseModel with _$ApiResponseModel {
     } else {
       return ApiResponseModel(
         code: response.statusCode,
-        errorMsg: response.data['fault'] == null ? response.data['errors'][0] : response.data['fault']['faultstring'],
+        errorMsg: response.data['fault'] == null
+            ? response.data['errors'][0]
+            : response.data['fault']['faultstring'],
         data: null,
         status: 'Not OK',
       );

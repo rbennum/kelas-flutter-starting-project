@@ -28,13 +28,18 @@ class NoInternetException extends DefaultException {
 }
 
 class UnknownException extends DefaultException {
-  UnknownException(e) : super(e != null ? e.toString() : 'Unknown error, please report this to us');
+  UnknownException(e)
+      : super(e != null
+            ? e.toString()
+            : 'Unknown error, please report this to us');
 }
 
 class TimeoutException extends DefaultException {
-  TimeoutException() : super('Problem with connection timeout, please try again');
+  TimeoutException()
+      : super('Problem with connection timeout, please try again');
 }
 
 class ApiResponseNotValidException extends DefaultException {
-  ApiResponseNotValidException() : super('Server error, please report this to us');
+  ApiResponseNotValidException()
+      : super('Server error, please report this to us');
 }
