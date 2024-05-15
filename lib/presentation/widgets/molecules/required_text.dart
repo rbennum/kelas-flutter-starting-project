@@ -32,7 +32,9 @@ class RequiredText extends StatelessWidget {
               TextSpan(
                 text: title,
               ),
-              TextSpan(text: required ? " *" : "", style: const TextStyle(color: Colors.red)),
+              TextSpan(
+                  text: required ? " *" : "",
+                  style: const TextStyle(color: Colors.red)),
             ],
           ),
           maxLines: 1,

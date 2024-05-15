@@ -8,12 +8,11 @@ class CounterState with _$CounterState {
   const CounterState._();
   const factory CounterState({required CounterEntity entity}) = _CounterState;
 
-  factory CounterState.initial() => CounterState(entity: CounterEntity.initial());
+  factory CounterState.initial() =>
+      CounterState(entity: CounterEntity.initial());
 
-  CounterState get increment => CounterState(
-      entity: entity.copyWith(counter: entity.counter + 1)
-  );
-  CounterState get decrement => CounterState(
-      entity: entity.copyWith(counter: entity.counter - 1)
-  );
+  CounterState get increment =>
+      CounterState(entity: entity.copyWith(counter: entity.counter + 1));
+  CounterState get decrement =>
+      CounterState(entity: entity.copyWith(counter: entity.counter - 1));
 }

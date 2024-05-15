@@ -55,7 +55,8 @@ class UIHelper {
     return ScreenUtil().setWidth(width);
   }
 
-  static Widget loading({Color? color, double? width, double? height, double? value}) {
+  static Widget loading(
+      {Color? color, double? width, double? height, double? value}) {
     return SizedBox(
       width: width ?? UIHelper.setSp(20),
       height: height ?? UIHelper.setSp(20),
@@ -63,7 +64,8 @@ class UIHelper {
         child: CircularProgressIndicator(
           value: value,
           strokeWidth: 2.0,
-          valueColor: AlwaysStoppedAnimation<Color>(color ?? ColorConstant.primary),
+          valueColor:
+              AlwaysStoppedAnimation<Color>(color ?? ColorConstant.primary),
         ),
       ),
     );

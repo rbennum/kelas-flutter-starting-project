@@ -7,5 +7,5 @@ class FormFailure with _$FormFailure {
   const factory FormFailure.empty() = _FormFailureEmpty;
   const factory FormFailure.tooLong() = _FormFailuretooLong;
   const factory FormFailure.invalidEmailAddress() = _InvalidEmailAddress;
-  const factory FormFailure.costumError() = _CustomError;
+  const factory FormFailure.customError() = _CustomError;
 }

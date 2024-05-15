@@ -5,7 +5,8 @@ class FormValidator {
   FormValidator._();
 
   static Either<FormFailure, Unit> emailValidator(String input) {
-    const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+    const emailRegex =
+        r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
     if (input.isEmpty) {
       return left(const FormFailure.empty());
     }
@@ -27,7 +28,7 @@ class FormValidator {
 
   static Either<FormFailure, Unit> customValidator({required bool validator}) {
     if (validator) {
-      return left(const FormFailure.costumError());
+      return left(const FormFailure.customError());
     }
     return right(unit);
   }

@@ -14,20 +14,29 @@ class SplashItemCard extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title,
-                style: context.textTheme.headlineLarge
-                    ?.copyWith(color: ColorConstant.primary)),
-            Text(description,
-                style: context.textTheme.bodyMedium
-                    ?.copyWith(color: ColorConstant.grey))
-          ],
-        )),
+          flex: 5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: context.textTheme.headlineLarge?.copyWith(
+                  color: ColorConstant.primary,
+                ),
+              ),
+              Text(
+                description,
+                style: context.textTheme.bodySmall?.copyWith(
+                  color: ColorConstant.grey,
+                ),
+              )
+            ],
+          ),
+        ),
+        const Spacer(),
         const Icon(
-          Icons.arrow_forward_ios,
-          size: 30,
+          Icons.arrow_forward_ios_outlined,
+          size: 24,
         )
       ],
     );

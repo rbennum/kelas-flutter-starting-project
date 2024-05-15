@@ -2,7 +2,8 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 
-abstract class PlatformWidget<I extends Widget, A extends Widget> extends StatelessWidget {
+abstract class PlatformWidget<I extends Widget, A extends Widget>
+    extends StatelessWidget {
   const PlatformWidget({super.key});
 
   @override

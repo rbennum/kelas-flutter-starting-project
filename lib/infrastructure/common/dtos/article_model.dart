@@ -15,11 +15,14 @@ class ArticleModel with _$ArticleModel {
     required String publishedDate,
   }) = _ArticleModel;
 
-  factory ArticleModel.fromMostPopular(Map<String, dynamic> json) => ArticleModel(
+  factory ArticleModel.fromMostPopular(Map<String, dynamic> json) =>
+      ArticleModel(
         id: json['id'].toString(),
         title: json['title'],
         byline: json['byline'],
-        multimedia: (json['media'] as List).isEmpty ? [] : [json['media'][0]['media-metadata'][0]['url']],
+        multimedia: (json['media'] as List).isEmpty
+            ? []
+            : [json['media'][0]['media-metadata'][0]['url']],
         publishedDate: json['published_date'],
       );
 
@@ -42,7 +45,8 @@ class ArticleModel with _$ArticleModel {
     return 'https://static01.nyt.com/${multimedia[0]}';
   }
 
-  factory ArticleModel.fromJson(Map<String, dynamic> json) => _$ArticleModelFromJson(json);
+  factory ArticleModel.fromJson(Map<String, dynamic> json) =>
+      _$ArticleModelFromJson(json);
 }
 
 bool isListOfStrings(List<dynamic> list) {

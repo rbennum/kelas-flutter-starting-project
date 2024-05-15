@@ -14,11 +14,15 @@ class SplashPage extends StatelessWidget {
       SplashItem(
           "Dummy UI",
           "Practice Flutter UI and get familiar with UI Widgets",
-              () => AutoRouter.of(context).push(const DummyUIRoute())),
+          () => AutoRouter.of(context).push(const DummyUIRoute())),
       SplashItem(
           "Counter Example (State Management)",
           "Introducing of state management using flutter_bloc. Level: 1",
-              () => AutoRouter.of(context).push(const CounterRoute()))
+          () => AutoRouter.of(context).push(const CounterRoute())),
+      SplashItem(
+          "Input Validation Example (State Management)",
+          "Flutter state management using flutter_bloc to handle validation in text field. Level: 2",
+          () => AutoRouter.of(context).push(const InputValidationRoute()))
     ];
 
     return Scaffold(
@@ -37,7 +41,7 @@ class SplashPage extends StatelessWidget {
             );
           },
           separatorBuilder: (BuildContext context, int index) =>
-          const Divider(),
+              const Divider(),
         ));
   }
 }
