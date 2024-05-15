@@ -81,11 +81,13 @@ class InputValidationView extends StatelessWidget {
               child: Padding(
                 padding: UIHelper.padding(horizontal: 20, vertical: 10),
                 child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: () =>
-                            context.read<InputValidationCubit>().submit(),
-                        child: const Text('Submit'))),
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () =>
+                        context.read<InputValidationCubit>().submit(),
+                    child: const Text('Submit'),
+                  ),
+                ),
               ),
             ),
           ],
