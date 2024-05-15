@@ -28,7 +28,7 @@ class FormValidator {
 
   static Either<FormFailure, Unit> customValidator({required bool validator}) {
     if (validator) {
-      return left(const FormFailure.costumError());
+      return left(const FormFailure.customError());
     }
     return right(unit);
   }

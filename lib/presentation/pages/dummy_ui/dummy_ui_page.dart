@@ -22,7 +22,7 @@ class DummyUIPage extends StatelessWidget {
         body: SingleChildScrollView(
           padding: UIHelper.padding(vertical: 10, horizontal: 20),
           child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(
               onTap: () =>
                   AutoRouter.of(context).push(const DummyUIListRoute()),
@@ -66,7 +66,7 @@ class DummyUIPage extends StatelessWidget {
             UIHelper.verticalSpace(10),
             ...List.generate(
                 2,
-                    (index) => NewsCard(
+                (index) => NewsCard(
                     imgSrc: Constants.dummyImg,
                     title: "How can I be Flutter Developer Expert?",
                     desc: "Jill Lepore \u2022 23 May 23")),
@@ -81,7 +81,7 @@ class DummyUIPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
                   3,
-                      (index) =>
+                  (index) =>
                       RowCard(index: index, imageSource: Constants.dummyImg)),
             ),
             UIHelper.verticalSpace(20),
