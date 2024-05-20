@@ -19,4 +19,15 @@ class CalculatorState with _$CalculatorState {
       );
 
   bool isSelectedType(CalculatorType type) => model.type == type;
+
+  String operatorSymbol(CalculatorType type) {
+    return type.when(
+      none: () => '',
+      add: () => '+',
+      subtract: () => '-',
+      multiply: () => '*',
+      divide: () => '/',
+      pow: () => '^',
+    );
+  }
 }

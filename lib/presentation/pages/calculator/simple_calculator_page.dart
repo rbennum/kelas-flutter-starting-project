@@ -26,6 +26,7 @@ class SimpleCalculatorPage extends StatelessWidget {
             return BlocBuilder<CalculatorCubit, CalculatorState>(
               builder: (context, state) {
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: SingleChildScrollView(
@@ -40,113 +41,84 @@ class SimpleCalculatorPage extends StatelessWidget {
                               ),
                             ),
                             UIHelper.verticalSpace(10),
-                            Wrap(
-                              spacing: 10,
-                              runSpacing: 10,
-                              children: [
-                                ChipCustom(
-                                  onTap: () => context
-                                      .read<CalculatorCubit>()
-                                      .selectType(const CalculatorType.add()),
-                                  title: "Add",
-                                  isSelected: state.isSelectedType(
-                                    const CalculatorType.add(),
-                                  ),
-                                ),
-                                ChipCustom(
-                                  onTap: () => context
-                                      .read<CalculatorCubit>()
-                                      .selectType(
-                                        const CalculatorType.subtract(),
-                                      ),
-                                  title: "Subtract",
-                                  isSelected: state.isSelectedType(
-                                    const CalculatorType.subtract(),
-                                  ),
-                                ),
-                                ChipCustom(
-                                  onTap: () => context
-                                      .read<CalculatorCubit>()
-                                      .selectType(
-                                        const CalculatorType.multiply(),
-                                      ),
-                                  title: "Multiply",
-                                  isSelected: state.isSelectedType(
-                                    const CalculatorType.multiply(),
-                                  ),
-                                ),
-                                ChipCustom(
-                                  onTap: () => context
-                                      .read<CalculatorCubit>()
-                                      .selectType(
-                                        const CalculatorType.divide(),
-                                      ),
-                                  title: "Divider",
-                                  isSelected: state.isSelectedType(
-                                    const CalculatorType.divide(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            UIHelper.verticalSpace(10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(
-                                  width: 60,
-                                  child: TextFormFieldCustom(
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    style: context.textTheme.displayLarge,
-                                    maxLength: 2,
-                                  ),
-                                ),
-                                UIHelper.horizontalSpace(10),
-                                const Text("-"),
-                                UIHelper.horizontalSpace(10),
-                                SizedBox(
-                                  width: 60,
-                                  child: TextFormFieldCustom(
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    style: context.textTheme.displayLarge,
-                                    maxLength: 2,
-                                  ),
-                                ),
-                                UIHelper.horizontalSpace(10),
-                                const Text('='),
-                                UIHelper.horizontalSpace(10),
-                                const Expanded(
-                                  child: Text(
-                                    '24324234324234234324223423423',
-                                  ),
-                                ),
-                              ],
-                            ),
-                            UIHelper.verticalSpace(10),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    UIHelper.borderRadiusCircular(all: 5),
-                                color: ColorConstant.lightGreen,
-                              ),
-                              padding: UIHelper.padding(
-                                  vertical: 10, horizontal: 15),
-                              child: Row(
+                            // View to show list of operators.
+                            const CalculatorOptionsView(),
+                            Visibility(
+                              visible: !state
+                                  .isSelectedType(const CalculatorType.none()),
+                              child: Column(
                                 children: [
-                                  const Icon(
-                                    Icons.info_outline_rounded,
-                                    color: ColorConstant.green,
-                                  ),
-                                  UIHelper.horizontalSpace(10),
-                                  Expanded(
-                                    child: Text(
-                                      'Press the calculate button to get the result',
-                                      style:
-                                          context.textTheme.bodySmall?.copyWith(
-                                        color: ColorConstant.grey,
-                                        fontStyle: FontStyle.italic,
+                                  UIHelper.verticalSpace(10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SizedBox(
+                                        width: 60,
+                                        child: TextFormFieldCustom(
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          style: context.textTheme.displayLarge,
+                                          controller: context
+                                              .read<CalculatorCubit>()
+                                              .leftFieldController,
+                                          maxLength: 2,
+                                        ),
                                       ),
+                                      UIHelper.horizontalSpace(10),
+                                      Text(
+                                        state.operatorSymbol(state.model.type),
+                                      ),
+                                      UIHelper.horizontalSpace(10),
+                                      SizedBox(
+                                        width: 60,
+                                        child: TextFormFieldCustom(
+                                          keyboardType: TextInputType.number,
+                                          textAlign: TextAlign.center,
+                                          style: context.textTheme.displayLarge,
+                                          controller: context
+                                              .read<CalculatorCubit>()
+                                              .rightFieldController,
+                                          maxLength: 2,
+                                        ),
+                                      ),
+                                      UIHelper.horizontalSpace(10),
+                                      const Text('='),
+                                      UIHelper.horizontalSpace(10),
+                                      const Expanded(
+                                        child: Text(
+                                          '24324234324234234324223423423',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  UIHelper.verticalSpace(10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          UIHelper.borderRadiusCircular(all: 5),
+                                      color: ColorConstant.lightGreen,
+                                    ),
+                                    padding: UIHelper.padding(
+                                        vertical: 10, horizontal: 15),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.info_outline_rounded,
+                                          color: ColorConstant.green,
+                                        ),
+                                        UIHelper.horizontalSpace(10),
+                                        Expanded(
+                                          child: Text(
+                                            'Press the calculate button to get the result',
+                                            style: context.textTheme.bodySmall
+                                                ?.copyWith(
+                                              color: ColorConstant.grey,
+                                              fontStyle: FontStyle.italic,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -190,6 +162,60 @@ class SimpleCalculatorPage extends StatelessWidget {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class CalculatorOptionsView extends StatelessWidget {
+  const CalculatorOptionsView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CalculatorCubit, CalculatorState>(
+      builder: (context, state) => Wrap(
+        spacing: 10,
+        runSpacing: 10,
+        children: [
+          ChipCustom(
+            onTap: () => context
+                .read<CalculatorCubit>()
+                .selectType(const CalculatorType.add()),
+            title: "Add",
+            isSelected: state.isSelectedType(
+              const CalculatorType.add(),
+            ),
+          ),
+          ChipCustom(
+            onTap: () => context.read<CalculatorCubit>().selectType(
+                  const CalculatorType.subtract(),
+                ),
+            title: "Subtract",
+            isSelected: state.isSelectedType(
+              const CalculatorType.subtract(),
+            ),
+          ),
+          ChipCustom(
+            onTap: () => context.read<CalculatorCubit>().selectType(
+                  const CalculatorType.multiply(),
+                ),
+            title: "Multiply",
+            isSelected: state.isSelectedType(
+              const CalculatorType.multiply(),
+            ),
+          ),
+          ChipCustom(
+            onTap: () => context.read<CalculatorCubit>().selectType(
+                  const CalculatorType.divide(),
+                ),
+            title: "Divider",
+            isSelected: state.isSelectedType(
+              const CalculatorType.divide(),
+            ),
+          ),
+        ],
       ),
     );
   }

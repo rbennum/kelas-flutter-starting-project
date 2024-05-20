@@ -17,6 +17,10 @@ class CalculatorCubit extends Cubit<CalculatorState> {
   late TextEditingController rightFieldController;
 
   void selectType(CalculatorType type) {
-    emit(state.unmodified.copyWith.model(type: type));
+    if (state.isSelectedType(type)) {
+      emit(state.unmodified.copyWith.model(type: const CalculatorType.none()));
+    } else {
+      emit(state.unmodified.copyWith.model(type: type));
+    }
   }
 }
