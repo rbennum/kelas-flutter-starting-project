@@ -16,6 +16,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final Widget? prefixIcon;
   final int? maxLines;
   final String? initialValue;
+  final int? maxLength;
 
   const TextFormFieldCustom({
     super.key,
@@ -30,6 +31,7 @@ class TextFormFieldCustom extends StatelessWidget {
     this.maxLines,
     this.onChange,
     this.initialValue,
+    this.maxLength,
   });
 
   @override
@@ -52,6 +54,7 @@ class TextFormFieldCustom extends StatelessWidget {
           style: style ?? context.textTheme.bodyLarge,
           validator: validator,
           onChanged: onChange,
+          maxLength: maxLength,
           decoration: InputDecoration(
             prefixIconColor: ColorConstant.primary,
             prefixIcon: prefixIcon,
@@ -97,6 +100,7 @@ class TextFormFieldCustom extends StatelessWidget {
             ),
             hintStyle: context.textTheme.bodyLarge!
                 .copyWith(color: ColorConstant.grey.withOpacity(0.7)),
+            counterText: '',
           ),
         ),
       ],
