@@ -34,23 +34,23 @@ class SplashPage extends StatelessWidget {
     ];
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Choose Section"),
-        ),
-        body: ListView.separated(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () => entries[index].action(),
-              child: SplashItemCard(
-                  title: entries[index].title,
-                  description: entries[index].description),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-        ));
+      appBar: AppBar(
+        title: const Text("Choose Section"),
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+            onTap: () => entries[index].action(),
+            child: SplashItemCard(
+                title: entries[index].title,
+                description: entries[index].description),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
+    );
   }
 }
 

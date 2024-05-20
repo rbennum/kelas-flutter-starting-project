@@ -112,14 +112,48 @@ class SimpleCalculatorPage extends StatelessWidget {
                               ),
                             ),
                             UIHelper.verticalSpace(10),
-                            // TODO: Apply widget based on history condition
-                            Text(
-                              'No history found',
-                              style: context.textTheme.bodySmall?.copyWith(
-                                color: ColorConstant.grey,
-                                fontStyle: FontStyle.italic,
-                              ),
-                            )
+                            state.model.histories.isEmpty
+                                ? Text(
+                                    'No history found',
+                                    style:
+                                        context.textTheme.bodySmall?.copyWith(
+                                      color: ColorConstant.grey,
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                  )
+                                : Column(
+                                    children: state.model.histories
+                                        .map(
+                                          (e) => Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(state.historyText(e)),
+                                                  const Spacer(),
+                                                  InkWell(
+                                                    onTap: () => context
+                                                        .read<CalculatorCubit>()
+                                                        .restoreHistory(e.id),
+                                                    child: Text(
+                                                      "Re-Apply",
+                                                      style: context
+                                                          .textTheme.bodySmall
+                                                          ?.copyWith(
+                                                        color: ColorConstant
+                                                            .primary,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              const Divider(),
+                                            ],
+                                          ),
+                                        )
+                                        .toList(),
+                                  ),
                           ],
                         ),
                       ),

@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:student_lecture_app/presentation/pages/calculator/domain/calculator_entity.dart';
 import 'package:student_lecture_app/presentation/pages/calculator/domain/calculator_type.dart';
+import 'package:student_lecture_app/presentation/pages/calculator/domain/history_entity.dart';
 
 part 'calculator_cubit.freezed.dart';
 part 'calculator_state.dart';
@@ -40,7 +41,6 @@ class CalculatorCubit extends Cubit<CalculatorState> {
   }
 
   void submit() {
-    emit(state.copyWith.model(isPressed: true));
     state.model.type.when(
       none: () {},
       add: () => addValues(),
@@ -56,7 +56,7 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       emit(state.copyWith(showError: false));
       int leftValue = int.parse(leftFieldController.text);
       int rightValue = int.parse(rightFieldController.text);
-      emit(state.copyWith.model(value: (leftValue + rightValue).toDouble()));
+      saveToHistoryList((leftValue + rightValue).toDouble());
     } else {
       emit(state.unmodified.copyWith(showError: true));
     }
@@ -67,7 +67,7 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       emit(state.copyWith(showError: false));
       int leftValue = int.parse(leftFieldController.text);
       int rightValue = int.parse(rightFieldController.text);
-      emit(state.copyWith.model(value: (leftValue - rightValue).toDouble()));
+      saveToHistoryList((leftValue - rightValue).toDouble());
     } else {
       emit(state.unmodified.copyWith(showError: true));
     }
@@ -78,7 +78,7 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       emit(state.copyWith(showError: false));
       int leftValue = int.parse(leftFieldController.text);
       int rightValue = int.parse(rightFieldController.text);
-      emit(state.copyWith.model(value: (leftValue * rightValue).toDouble()));
+      saveToHistoryList((leftValue * rightValue).toDouble());
     } else {
       emit(state.unmodified.copyWith(showError: true));
     }
@@ -89,7 +89,7 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       emit(state.copyWith(showError: false));
       int leftValue = int.parse(leftFieldController.text);
       int rightValue = int.parse(rightFieldController.text);
-      emit(state.copyWith.model(value: leftValue.toDouble() / rightValue));
+      saveToHistoryList(leftValue.toDouble() / rightValue);
     } else {
       emit(state.unmodified.copyWith(showError: true));
     }
@@ -100,9 +100,41 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       emit(state.copyWith(showError: false));
       int baseInt = int.parse(leftFieldController.text);
       int exponentInt = int.parse(rightFieldController.text);
-      emit(state.copyWith.model(value: pow(baseInt, exponentInt).toDouble()));
+      saveToHistoryList(pow(baseInt, exponentInt).toDouble());
     } else {
       emit(state.unmodified.copyWith(showError: true));
     }
+  }
+
+  void saveToHistoryList(double result) {
+    emit(
+      state.unmodified.copyWith.model(
+        histories: state.model.newHistoryCollection,
+        value: result,
+        isPressed: true,
+      ),
+    );
+  }
+
+  void restoreHistory(int id) {
+    final fetchedHistory = state.model.restoreHistory(id);
+
+    leftFieldController.removeListener(inputLeftValue);
+    rightFieldController.removeListener(inputRightValue);
+
+    leftFieldController.value =
+        TextEditingValue(text: fetchedHistory.leftValue);
+    rightFieldController.value =
+        TextEditingValue(text: fetchedHistory.rightValue);
+
+    leftFieldController.addListener(inputLeftValue);
+    rightFieldController.addListener(inputRightValue);
+
+    emit(state.unmodified.copyWith.model(
+      leftValue: fetchedHistory.leftValue,
+      rightValue: fetchedHistory.rightValue,
+      type: fetchedHistory.type,
+      histories: state.model.removeHistory(id),
+    ));
   }
 }

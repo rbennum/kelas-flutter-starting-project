@@ -38,4 +38,8 @@ class CalculatorState with _$CalculatorState {
     }
     return model.rightFieldErrorMessage ?? '';
   }
+
+  String historyText(HistoryEntity entity) {
+    return "${entity.leftValue} ${operatorSymbol(entity.type)} ${entity.rightValue}";
+  }
 }

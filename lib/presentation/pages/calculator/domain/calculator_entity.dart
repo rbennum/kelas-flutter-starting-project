@@ -10,6 +10,7 @@ part 'calculator_entity.freezed.dart';
 @freezed
 class CalculatorEntity with _$CalculatorEntity {
   const CalculatorEntity._();
+
   factory CalculatorEntity({
     required double value,
     required String leftValue,
@@ -18,6 +19,7 @@ class CalculatorEntity with _$CalculatorEntity {
     required List<HistoryEntity> histories,
     required bool isPressed,
   }) = _CalculatorEntity;
+
   factory CalculatorEntity.empty() => CalculatorEntity(
         value: 0,
         leftValue: "",
@@ -81,4 +83,23 @@ class CalculatorEntity with _$CalculatorEntity {
 
   bool get operandCannotBeZeroValidator =>
       type == const CalculatorType.divide() && double.parse(rightValue) == 0;
+
+  HistoryEntity restoreHistory(int id) {
+    return histories.firstWhere((element) => element.id == id);
+  }
+
+  List<HistoryEntity> get newHistoryCollection {
+    final HistoryEntity newHistory = HistoryEntity.newEntity(
+      leftValue: leftValue,
+      rightValue: rightValue,
+      type: type,
+    );
+    return [...histories, newHistory];
+  }
+
+  List<HistoryEntity> removeHistory(int id) {
+    List<HistoryEntity> newList = List.from(histories);
+    newList.removeWhere((element) => element.id == id);
+    return newList;
+  }
 }
