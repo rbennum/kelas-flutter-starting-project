@@ -23,8 +23,14 @@ class ChipCustom extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected ? ColorConstant.lightBlue : null,
           border: isSelected
-              ? null
-              : Border.all(color: ColorConstant.lightGrey, width: 1),
+              ? Border.all(
+                  color: ColorConstant.lightBlue,
+                  width: 2,
+                )
+              : Border.all(
+                  color: ColorConstant.lightGrey,
+                  width: 1,
+                ),
           borderRadius: UIHelper.borderRadiusCircular(all: 5),
         ),
         child: Text(

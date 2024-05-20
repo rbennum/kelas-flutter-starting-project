@@ -30,4 +30,12 @@ class CalculatorState with _$CalculatorState {
       pow: () => '^',
     );
   }
+
+  String get errorMessage {
+    if (!showError) return 'Press the calculate button to get the result';
+    if (model.leftFieldErrorMessage != null) {
+      return model.leftFieldErrorMessage!;
+    }
+    return model.rightFieldErrorMessage ?? '';
+  }
 }

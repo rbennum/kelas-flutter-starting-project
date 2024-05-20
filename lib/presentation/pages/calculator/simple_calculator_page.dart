@@ -68,6 +68,7 @@ class SimpleCalculatorPage extends StatelessWidget {
                                       UIHelper.horizontalSpace(10),
                                       Text(
                                         state.operatorSymbol(state.model.type),
+                                        style: context.textTheme.displayLarge,
                                       ),
                                       UIHelper.horizontalSpace(10),
                                       SizedBox(
@@ -83,44 +84,23 @@ class SimpleCalculatorPage extends StatelessWidget {
                                         ),
                                       ),
                                       UIHelper.horizontalSpace(10),
-                                      const Text('='),
+                                      Text(
+                                        '=',
+                                        style: context.textTheme.displayLarge,
+                                      ),
                                       UIHelper.horizontalSpace(10),
-                                      const Expanded(
+                                      Expanded(
                                         child: Text(
-                                          '24324234324234234324223423423',
+                                          state.model.isPressed
+                                              ? state.model.convertValue
+                                              : '...',
+                                          style: context.textTheme.displayLarge,
                                         ),
                                       ),
                                     ],
                                   ),
                                   UIHelper.verticalSpace(10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          UIHelper.borderRadiusCircular(all: 5),
-                                      color: ColorConstant.lightGreen,
-                                    ),
-                                    padding: UIHelper.padding(
-                                        vertical: 10, horizontal: 15),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.info_outline_rounded,
-                                          color: ColorConstant.green,
-                                        ),
-                                        UIHelper.horizontalSpace(10),
-                                        Expanded(
-                                          child: Text(
-                                            'Press the calculate button to get the result',
-                                            style: context.textTheme.bodySmall
-                                                ?.copyWith(
-                                              color: ColorConstant.grey,
-                                              fontStyle: FontStyle.italic,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  const InfoBoxView(),
                                 ],
                               ),
                             ),
@@ -150,7 +130,8 @@ class SimpleCalculatorPage extends StatelessWidget {
                         child: SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                context.read<CalculatorCubit>().submit(),
                             child: const Text('CALCULATE'),
                           ),
                         ),
@@ -161,6 +142,48 @@ class SimpleCalculatorPage extends StatelessWidget {
               },
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class InfoBoxView extends StatelessWidget {
+  const InfoBoxView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CalculatorCubit, CalculatorState>(
+      builder: (context, state) => Container(
+        decoration: BoxDecoration(
+          borderRadius: UIHelper.borderRadiusCircular(all: 5),
+          color: ColorConstant.lightGreen,
+        ),
+        padding: UIHelper.padding(
+          vertical: 10,
+          horizontal: 15,
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.info_outline_rounded,
+              color: state.showError ? ColorConstant.red : ColorConstant.green,
+            ),
+            UIHelper.horizontalSpace(10),
+            Expanded(
+              child: Text(
+                state.errorMessage,
+                style: context.textTheme.bodySmall?.copyWith(
+                  color:
+                      state.showError ? ColorConstant.red : ColorConstant.grey,
+                  fontStyle:
+                      state.showError ? FontStyle.normal : FontStyle.italic,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
