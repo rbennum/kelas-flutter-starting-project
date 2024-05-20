@@ -238,6 +238,15 @@ class CalculatorOptionsView extends StatelessWidget {
               const CalculatorType.divide(),
             ),
           ),
+          ChipCustom(
+            onTap: () => context.read<CalculatorCubit>().selectType(
+                  const CalculatorType.pow(),
+                ),
+            title: "Power",
+            isSelected: state.isSelectedType(
+              const CalculatorType.pow(),
+            ),
+          ),
         ],
       ),
     );

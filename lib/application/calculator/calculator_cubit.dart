@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -45,7 +47,7 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       subtract: () => subtractValues(),
       multiply: () => multiplyValues(),
       divide: () => divideValues(),
-      pow: () {},
+      pow: () => powerValues(),
     );
   }
 
@@ -88,6 +90,17 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       int leftValue = int.parse(leftFieldController.text);
       int rightValue = int.parse(rightFieldController.text);
       emit(state.copyWith.model(value: leftValue.toDouble() / rightValue));
+    } else {
+      emit(state.unmodified.copyWith(showError: true));
+    }
+  }
+
+  void powerValues() {
+    if (state.model.failureOption.isNone()) {
+      emit(state.copyWith(showError: false));
+      int baseInt = int.parse(leftFieldController.text);
+      int exponentInt = int.parse(rightFieldController.text);
+      emit(state.copyWith.model(value: pow(baseInt, exponentInt).toDouble()));
     } else {
       emit(state.unmodified.copyWith(showError: true));
     }
