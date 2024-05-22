@@ -31,6 +31,11 @@ class SplashPage extends StatelessWidget {
         "Flutter state management using flutter_bloc to calculate simple syntax",
         () => AutoRouter.of(context).push(const SimpleCalculatorRoute()),
       ),
+      SplashItem(
+        "ToDo App Example (State Management)",
+        "Create a to do list that saved in local storage using hydrated_bloc. Level: 4",
+        () => AutoRouter.of(context).push(const ToDoRoute()),
+      ),
     ];
 
     return Scaffold(
