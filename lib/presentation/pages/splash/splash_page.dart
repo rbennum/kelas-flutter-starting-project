@@ -12,37 +12,45 @@ class SplashPage extends StatelessWidget {
     // final List<String> entries = <String>['Entry A', 'Entry B'];
     final List<SplashItem> entries = <SplashItem>[
       SplashItem(
-          "Dummy UI",
-          "Practice Flutter UI and get familiar with UI Widgets",
-          () => AutoRouter.of(context).push(const DummyUIRoute())),
+        "Dummy UI",
+        "Practice Flutter UI and get familiar with UI Widgets",
+        () => AutoRouter.of(context).push(const DummyUIRoute()),
+      ),
       SplashItem(
-          "Counter Example (State Management)",
-          "Introducing of state management using flutter_bloc. Level: 1",
-          () => AutoRouter.of(context).push(const CounterRoute())),
+        "Counter Example (State Management)",
+        "Introducing of state management using flutter_bloc. Level: 1",
+        () => AutoRouter.of(context).push(const CounterRoute()),
+      ),
       SplashItem(
-          "Input Validation Example (State Management)",
-          "Flutter state management using flutter_bloc to handle validation in text field. Level: 2",
-          () => AutoRouter.of(context).push(const InputValidationRoute()))
+        "Input Validation Example (State Management)",
+        "Flutter state management using flutter_bloc to handle validation in text field. Level: 2",
+        () => AutoRouter.of(context).push(const InputValidationRoute()),
+      ),
+      SplashItem(
+        "Calculator Example (State Management)",
+        "Flutter state management using flutter_bloc to calculate simple syntax",
+        () => AutoRouter.of(context).push(const SimpleCalculatorRoute()),
+      ),
     ];
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Choose Section"),
-        ),
-        body: ListView.separated(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-          itemCount: entries.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () => entries[index].action(),
-              child: SplashItemCard(
-                  title: entries[index].title,
-                  description: entries[index].description),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-        ));
+      appBar: AppBar(
+        title: const Text("Choose Section"),
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+            onTap: () => entries[index].action(),
+            child: SplashItemCard(
+                title: entries[index].title,
+                description: entries[index].description),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
+    );
   }
 }
 

@@ -6,12 +6,12 @@ import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dar
 class ChipCustom extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
-  final bool isChoosen;
+  final bool isSelected;
   const ChipCustom({
     super.key,
     required this.onTap,
     required this.title,
-    this.isChoosen = false,
+    this.isSelected = false,
   });
 
   @override
@@ -21,14 +21,22 @@ class ChipCustom extends StatelessWidget {
       child: Container(
         padding: UIHelper.padding(vertical: 5, horizontal: 20),
         decoration: BoxDecoration(
-          color: isChoosen ? ColorConstant.lightBlue : null,
-          border: Border.all(color: ColorConstant.lightGrey, width: 0.5),
+          color: isSelected ? ColorConstant.lightBlue : null,
+          border: isSelected
+              ? Border.all(
+                  color: ColorConstant.lightBlue,
+                  width: 2,
+                )
+              : Border.all(
+                  color: ColorConstant.lightGrey,
+                  width: 1,
+                ),
           borderRadius: UIHelper.borderRadiusCircular(all: 5),
         ),
         child: Text(
           title,
           style: context.textTheme.bodyMedium?.copyWith(
-            color: isChoosen ? ColorConstant.primary : null,
+            color: isSelected ? ColorConstant.primary : null,
           ),
         ),
       ),
