@@ -84,4 +84,15 @@ class ToDoCubit extends HydratedCubit<ToDoState> {
       ),
     );
   }
+
+  void setTaskDone(ToDoHistoryEntity model, bool value) {
+    emit(
+      state.unmodified.copyWith.model(
+        historyList: state.model.updateTask(
+          id: model.id,
+          isDone: value,
+        ),
+      ),
+    );
+  }
 }

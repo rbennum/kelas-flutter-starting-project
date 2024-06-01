@@ -24,9 +24,9 @@ class _ToDoHistoryListView extends StatelessWidget {
             return Row(
               children: [
                 Checkbox(
-                  value: false,
+                  value: item.isDone,
                   onChanged: (val) {
-                    return;
+                    context.read<ToDoCubit>().setTaskDone(item, val ?? false);
                   },
                 ),
                 Expanded(
