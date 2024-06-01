@@ -71,4 +71,20 @@ class ToDoEntity with _$ToDoEntity {
     newHistoryList.removeWhere((element) => element == model);
     return newHistoryList;
   }
+
+  List<ToDoHistoryEntity> updateTask({
+    required int id,
+    String? task,
+    bool? isDone,
+  }) {
+    final newHistoryList = [...historyList];
+    final taskToUpdate =
+        newHistoryList.singleWhere((element) => element.id == id);
+    final indexToUpdate = newHistoryList.indexOf(taskToUpdate);
+    newHistoryList[indexToUpdate] = newHistoryList[indexToUpdate].copyWith(
+      text: task ?? taskToUpdate.text,
+      isDone: isDone ?? taskToUpdate.isDone,
+    );
+    return newHistoryList;
+  }
 }

@@ -47,7 +47,14 @@ class ToDoCubit extends HydratedCubit<ToDoState> {
               historyList: [...state.model.historyList, newTask],
             ),
           );
-        } else {}
+        } else {
+          emit(state.unmodified.copyWith(showError: false).copyWith.model(
+            historyList: [
+              ...state.model
+                  .updateTask(id: state.model.id, task: state.model.text)
+            ],
+          ));
+        }
         inputController.clear();
       },
       (failure) => emit(
@@ -62,6 +69,18 @@ class ToDoCubit extends HydratedCubit<ToDoState> {
     emit(
       state.unmodified.copyWith.model(
         historyList: state.model.removeTask(model),
+      ),
+    );
+  }
+
+  void editTask(ToDoHistoryEntity model) {
+    inputController.removeListener(onInputTextChanges);
+    inputController.text = model.text;
+    inputController.addListener(onInputTextChanges);
+    emit(
+      state.unmodified.copyWith.model(
+        id: model.id,
+        text: model.text,
       ),
     );
   }
