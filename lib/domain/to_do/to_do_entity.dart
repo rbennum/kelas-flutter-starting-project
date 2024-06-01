@@ -65,4 +65,10 @@ class ToDoEntity with _$ToDoEntity {
   String? get errorMessage => _emptyTaskErrorMessage
       .andThen(() => _duplicatedTaskErrorMessage)
       .fold((message) => message, (_) => null);
+
+  List<ToDoHistoryEntity> removeTask(ToDoHistoryEntity model) {
+    final newHistoryList = [...historyList];
+    newHistoryList.removeWhere((element) => element == model);
+    return newHistoryList;
+  }
 }

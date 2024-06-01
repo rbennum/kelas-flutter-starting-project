@@ -57,4 +57,12 @@ class ToDoCubit extends HydratedCubit<ToDoState> {
       ),
     );
   }
+
+  void deleteTask(ToDoHistoryEntity model) {
+    emit(
+      state.unmodified.copyWith.model(
+        historyList: state.model.removeTask(model),
+      ),
+    );
+  }
 }

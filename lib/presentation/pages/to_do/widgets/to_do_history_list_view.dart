@@ -48,7 +48,7 @@ class _ToDoHistoryListView extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => context.read<ToDoCubit>().deleteTask(item),
                   icon: const Icon(
                     Icons.delete,
                     color: ColorConstant.primary,

@@ -50,7 +50,7 @@ class ToDoPage extends StatelessWidget {
                   }
                   context.read<ToDoCubit>().submit();
                 },
-                child: const Text("Save"),
+                child: Text(state.isNewTask ? "Save" : "Update"),
               );
             },
           ),
