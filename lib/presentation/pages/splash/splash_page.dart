@@ -36,6 +36,11 @@ class SplashPage extends StatelessWidget {
         "Create a to do list that saved in local storage using hydrated_bloc. Level: 4",
         () => AutoRouter.of(context).push(const ToDoRoute()),
       ),
+      SplashItem(
+        "News App",
+        "API calling using free source from NYTimes",
+        () {},
+      ),
     ];
 
     return Scaffold(

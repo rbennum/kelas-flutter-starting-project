@@ -19,4 +19,14 @@ class ToDoState with _$ToDoState {
   bool get isNewTask => model.id == 0;
 
   String? get getErrorMessage => showError ? model.errorMessage : null;
+
+  bool isEdited(int id) => id == model.id;
+
+  List<ToDoHistoryEntity> get historyListByStatus => model.type.when(
+        All: () => model.historyList,
+        Done: () =>
+            model.historyList.where((element) => element.isDone).toList(),
+        NotDone: () =>
+            model.historyList.where((element) => !element.isDone).toList(),
+      );
 }

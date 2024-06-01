@@ -7,7 +7,7 @@ class _ToDoHistoryListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ToDoCubit, ToDoState>(
       builder: (context, state) {
-        if (state.model.historyList.isEmpty) {
+        if (state.historyListByStatus.isEmpty) {
           return SliverToBoxAdapter(
             child: Text(
               "No histories found",
@@ -20,7 +20,7 @@ class _ToDoHistoryListView extends StatelessWidget {
         }
         return SliverList.separated(
           itemBuilder: (context, index) {
-            ToDoHistoryEntity item = state.model.historyList[index];
+            ToDoHistoryEntity item = state.historyListByStatus[index];
             return Row(
               children: [
                 Checkbox(
@@ -32,13 +32,14 @@ class _ToDoHistoryListView extends StatelessWidget {
                 Expanded(
                   child: Text(item.text),
                 ),
-                Text(
-                  "(edited)",
-                  style: context.textTheme.labelSmall?.copyWith(
-                    color: ColorConstant.grey,
-                    fontStyle: FontStyle.italic,
+                if (state.isEdited(item.id))
+                  Text(
+                    "(edited)",
+                    style: context.textTheme.labelSmall?.copyWith(
+                      color: ColorConstant.grey,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
-                ),
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
