@@ -1,0 +1,1 @@
+// a private class to show list of news based on the selected section

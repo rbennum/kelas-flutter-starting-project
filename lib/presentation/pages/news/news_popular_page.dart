@@ -1,0 +1,1 @@
+// a private class to show list of most popular articles

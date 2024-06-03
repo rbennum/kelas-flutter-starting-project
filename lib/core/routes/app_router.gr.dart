@@ -8,9 +8,9 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:student_lecture_app/presentation/pages/calculator/simple_calculator_page.dart'
-    as _i5;
+    as _i6;
 import 'package:student_lecture_app/presentation/pages/counter/counter_page.dart'
     as _i1;
 import 'package:student_lecture_app/presentation/pages/dummy_ui/dummy_ui_page.dart'
@@ -19,56 +19,64 @@ import 'package:student_lecture_app/presentation/pages/dummy_ui_2/dummy_ui_list_
     as _i2;
 import 'package:student_lecture_app/presentation/pages/input_validation/input_validation_page.dart'
     as _i4;
+import 'package:student_lecture_app/presentation/pages/news/news_page.dart'
+    as _i5;
 import 'package:student_lecture_app/presentation/pages/splash/splash_page.dart'
-    as _i6;
-import 'package:student_lecture_app/presentation/pages/to_do/to_do_page.dart'
     as _i7;
+import 'package:student_lecture_app/presentation/pages/to_do/to_do_page.dart'
+    as _i8;
 
-abstract class $AppRouter extends _i8.RootStackRouter {
+abstract class $AppRouter extends _i9.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     CounterRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.CounterPage(),
       );
     },
     DummyUIListRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.DummyUIListPage(),
       );
     },
     DummyUIRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.DummyUIPage(),
       );
     },
     InputValidationRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i4.InputValidationPage(),
       );
     },
-    SimpleCalculatorRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+    NewsRoute.name: (routeData) {
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.SimpleCalculatorPage(),
+        child: const _i5.NewsPage(),
+      );
+    },
+    SimpleCalculatorRoute.name: (routeData) {
+      return _i9.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i6.SimpleCalculatorPage(),
       );
     },
     SplashRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.SplashPage(),
+        child: const _i7.SplashPage(),
       );
     },
     ToDoRoute.name: (routeData) {
-      return _i8.AutoRoutePage<dynamic>(
+      return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.ToDoPage(),
+        child: const _i8.ToDoPage(),
       );
     },
   };
@@ -76,8 +84,8 @@ abstract class $AppRouter extends _i8.RootStackRouter {
 
 /// generated route for
 /// [_i1.CounterPage]
-class CounterRoute extends _i8.PageRouteInfo<void> {
-  const CounterRoute({List<_i8.PageRouteInfo>? children})
+class CounterRoute extends _i9.PageRouteInfo<void> {
+  const CounterRoute({List<_i9.PageRouteInfo>? children})
       : super(
           CounterRoute.name,
           initialChildren: children,
@@ -85,13 +93,13 @@ class CounterRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'CounterRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.DummyUIListPage]
-class DummyUIListRoute extends _i8.PageRouteInfo<void> {
-  const DummyUIListRoute({List<_i8.PageRouteInfo>? children})
+class DummyUIListRoute extends _i9.PageRouteInfo<void> {
+  const DummyUIListRoute({List<_i9.PageRouteInfo>? children})
       : super(
           DummyUIListRoute.name,
           initialChildren: children,
@@ -99,13 +107,13 @@ class DummyUIListRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'DummyUIListRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.DummyUIPage]
-class DummyUIRoute extends _i8.PageRouteInfo<void> {
-  const DummyUIRoute({List<_i8.PageRouteInfo>? children})
+class DummyUIRoute extends _i9.PageRouteInfo<void> {
+  const DummyUIRoute({List<_i9.PageRouteInfo>? children})
       : super(
           DummyUIRoute.name,
           initialChildren: children,
@@ -113,13 +121,13 @@ class DummyUIRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'DummyUIRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.InputValidationPage]
-class InputValidationRoute extends _i8.PageRouteInfo<void> {
-  const InputValidationRoute({List<_i8.PageRouteInfo>? children})
+class InputValidationRoute extends _i9.PageRouteInfo<void> {
+  const InputValidationRoute({List<_i9.PageRouteInfo>? children})
       : super(
           InputValidationRoute.name,
           initialChildren: children,
@@ -127,13 +135,27 @@ class InputValidationRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'InputValidationRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.SimpleCalculatorPage]
-class SimpleCalculatorRoute extends _i8.PageRouteInfo<void> {
-  const SimpleCalculatorRoute({List<_i8.PageRouteInfo>? children})
+/// [_i5.NewsPage]
+class NewsRoute extends _i9.PageRouteInfo<void> {
+  const NewsRoute({List<_i9.PageRouteInfo>? children})
+      : super(
+          NewsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsRoute';
+
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i6.SimpleCalculatorPage]
+class SimpleCalculatorRoute extends _i9.PageRouteInfo<void> {
+  const SimpleCalculatorRoute({List<_i9.PageRouteInfo>? children})
       : super(
           SimpleCalculatorRoute.name,
           initialChildren: children,
@@ -141,13 +163,13 @@ class SimpleCalculatorRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'SimpleCalculatorRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.SplashPage]
-class SplashRoute extends _i8.PageRouteInfo<void> {
-  const SplashRoute({List<_i8.PageRouteInfo>? children})
+/// [_i7.SplashPage]
+class SplashRoute extends _i9.PageRouteInfo<void> {
+  const SplashRoute({List<_i9.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -155,13 +177,13 @@ class SplashRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i7.ToDoPage]
-class ToDoRoute extends _i8.PageRouteInfo<void> {
-  const ToDoRoute({List<_i8.PageRouteInfo>? children})
+/// [_i8.ToDoPage]
+class ToDoRoute extends _i9.PageRouteInfo<void> {
+  const ToDoRoute({List<_i9.PageRouteInfo>? children})
       : super(
           ToDoRoute.name,
           initialChildren: children,
@@ -169,5 +191,5 @@ class ToDoRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'ToDoRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }

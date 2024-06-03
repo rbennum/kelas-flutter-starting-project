@@ -14,7 +14,8 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:logger/logger.dart' as _i5;
 import 'package:student_lecture_app/core/env/env.dart' as _i4;
 import 'package:student_lecture_app/core/routes/app_router.dart' as _i3;
-import 'package:student_lecture_app/core/utils/register_module.dart' as _i8;
+import 'package:student_lecture_app/core/utils/register_module.dart' as _i9;
+import 'package:student_lecture_app/domain/news/news_data_source.dart' as _i8;
 import 'package:student_lecture_app/infrastructure/core/api_helper.dart' as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -34,8 +35,10 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i5.Logger>(() => registerModule.logger);
     gh.lazySingleton<_i6.Dio>(() => registerModule.dio(gh<_i4.Env>()));
     gh.lazySingleton<_i7.ApiHelper>(() => _i7.ApiHelper(gh<_i6.Dio>()));
+    gh.factory<_i8.NewsDataSource>(
+        () => _i8.NewsDataSource(gh<_i7.ApiHelper>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i8.RegisterModule {}
+class _$RegisterModule extends _i9.RegisterModule {}
