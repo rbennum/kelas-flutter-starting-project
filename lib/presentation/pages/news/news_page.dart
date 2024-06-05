@@ -40,7 +40,9 @@ class NewsPage extends StatelessWidget {
                         ),
                         UIHelper.verticalSpace(10),
                         InkWell(
-                          onTap: () {}, // TODO: take care of this action
+                          onTap: () => AutoRouter.of(context).push(
+                            const NewsTopStorySectionRoute(),
+                          ),
                           child: Container(
                             padding: UIHelper.padding(all: 10),
                             decoration: BoxDecoration(

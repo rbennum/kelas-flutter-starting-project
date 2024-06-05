@@ -1,1 +1,0 @@
-// a private class to show list of top story sections.
