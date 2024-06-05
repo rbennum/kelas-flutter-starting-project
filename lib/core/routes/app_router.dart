@@ -15,5 +15,6 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: NewsRoute.page),
     AutoRoute(page: NewsPopularRoute.page),
     AutoRoute(page: NewsTopStorySectionRoute.page),
+    AutoRoute(page: NewsTopStoryRoute.page),
   ];
 }

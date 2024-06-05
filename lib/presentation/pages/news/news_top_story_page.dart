@@ -1,30 +1,59 @@
-// a private class to show list of most popular articles
+// a private class to show list of news based on the selected section
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_lecture_app/application/news/news_most_popular_cubit.dart';
+import 'package:student_lecture_app/application/news/news_top_stories_cubit.dart';
+import 'package:student_lecture_app/core/commons/colors_const.dart';
 import 'package:student_lecture_app/core/injection/injection.dart';
+import 'package:student_lecture_app/presentation/widgets/atoms/text_theme_extension.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/news_card.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
 
 @RoutePage()
-class NewsPopularPage extends StatelessWidget {
-  const NewsPopularPage({super.key});
+class NewsTopStoryPage extends StatelessWidget {
+  final String section;
+
+  const NewsTopStoryPage({
+    super.key,
+    required this.section,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<NewsMostPopularCubit>()..getMostPopular(),
+      create: (context) => getIt<NewsTopStoriesCubit>()..getTopStories(section),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Most Popular Articles"),
+          title: const Text("Top Stories"),
         ),
-        body: CustomScrollView(
-          controller: ScrollController(),
-          slivers: <Widget>[
-            SliverPadding(
-              padding: UIHelper.padding(top: 10),
-              sliver: BlocBuilder<NewsMostPopularCubit, NewsMostPopularState>(
+        body: Padding(
+          padding: UIHelper.padding(horizontal: 20),
+          child: CustomScrollView(
+            controller: ScrollController(),
+            slivers: [
+              SliverPadding(
+                padding: UIHelper.padding(bottom: 10),
+                sliver: SliverToBoxAdapter(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "SECTION:",
+                        style: context.textTheme.headlineSmall?.copyWith(
+                          color: ColorConstant.grey,
+                        ),
+                      ),
+                      Text(
+                        section.toUpperCase(),
+                        style: context.textTheme.headlineSmall?.copyWith(
+                          color: ColorConstant.primary,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              BlocBuilder<NewsTopStoriesCubit, NewsTopStoriesState>(
                 builder: (context, state) {
                   return state.responseOption.fold(
                     () => state.isLoading
@@ -34,7 +63,7 @@ class NewsPopularPage extends StatelessWidget {
                         : const SliverToBoxAdapter(
                             child: SizedBox.shrink(),
                           ),
-                    (response) => response.fold(
+                    (result) => result.fold(
                       (failure) => failure.when(
                         fromServerSide: (val) => SliverFillRemaining(
                           child: Text(val),
@@ -55,9 +84,9 @@ class NewsPopularPage extends StatelessWidget {
                     ),
                   );
                 },
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:student_lecture_app/core/commons/colors_const.dart';
 import 'package:student_lecture_app/core/commons/constants.dart';
+import 'package:student_lecture_app/core/routes/app_router.gr.dart';
 import 'package:student_lecture_app/presentation/widgets/atoms/text_theme_extension.dart';
 import 'package:student_lecture_app/presentation/widgets/molecules/chip.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
@@ -35,7 +36,9 @@ class NewsTopStorySectionPage extends StatelessWidget {
               children: Constants.newsSections
                   .map(
                     (e) => ChipCustom(
-                      onTap: () {}, // TODO: pass the text here
+                      onTap: () => AutoRouter.of(context).push(
+                        NewsTopStoryRoute(section: e),
+                      ),
                       title: e,
                     ),
                   )

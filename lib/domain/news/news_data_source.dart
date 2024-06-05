@@ -15,7 +15,7 @@ class NewsDataSource {
     );
     final rawList = response.data as List;
     final list = List.generate(
-      rawList.length.clamp(0, 20),
+      rawList.length,
       (index) => ArticleModel.fromJson(rawList[index]),
     );
     return list;
@@ -25,7 +25,7 @@ class NewsDataSource {
     final response = await _apiHelper.get(path: ApiPathConstant.mostPopular);
     final rawList = response.data as List;
     final list = List.generate(
-      rawList.length.clamp(0, 20),
+      rawList.length,
       (index) => ArticleModel.fromMostPopular(rawList[index]),
     );
     return list;
