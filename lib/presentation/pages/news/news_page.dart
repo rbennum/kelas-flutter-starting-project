@@ -105,11 +105,19 @@ class NewsPage extends StatelessWidget {
                             (response) => SliverList.builder(
                               itemBuilder: (context, index) {
                                 final article = response[index];
-                                return NewsCard(
-                                  title: article.title,
-                                  imgSrc: article.multimediaConverted,
-                                  desc:
-                                      '${article.byline} \u2022 ${article.publishedDateConverted}',
+                                return InkWell(
+                                  child: NewsCard(
+                                    title: article.title,
+                                    imgSrc: article.multimediaConverted,
+                                    desc:
+                                        '${article.byline} \u2022 ${article.publishedDateConverted}',
+                                  ),
+                                  onTap: () => AutoRouter.of(context).push(
+                                    NewsDetailRoute(
+                                      urlString: article.url,
+                                      title: article.title,
+                                    ),
+                                  ),
                                 );
                               },
                               itemCount: 3,

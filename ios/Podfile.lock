@@ -7,11 +7,14 @@ PODS:
     - Flutter
     - FlutterMacOS
   - Toast (4.1.1)
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 SPEC REPOS:
   trunk:
@@ -24,12 +27,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
+  webview_flutter_wkwebview: 4f3e50f7273d31e5500066ed267e3ae4309c5ae4
 
 PODFILE CHECKSUM: 7be2f5f74864d463a8ad433546ed1de7e0f29aef
 

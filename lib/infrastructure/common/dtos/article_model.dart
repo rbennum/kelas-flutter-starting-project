@@ -13,6 +13,7 @@ class ArticleModel with _$ArticleModel {
     required String byline,
     @JsonKey(fromJson: multimediaFromJson) required List<String> multimedia,
     required String publishedDate,
+    required String url,
   }) = _ArticleModel;
 
   factory ArticleModel.fromMostPopular(Map<String, dynamic> json) =>
@@ -24,6 +25,7 @@ class ArticleModel with _$ArticleModel {
             ? []
             : [json['media'][0]['media-metadata'][0]['url']],
         publishedDate: json['published_date'],
+        url: json['url'],
       );
 
   String get publishedDateConverted {

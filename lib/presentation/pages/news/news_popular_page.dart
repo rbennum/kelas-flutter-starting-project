@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_lecture_app/application/news/news_most_popular_cubit.dart';
 import 'package:student_lecture_app/core/injection/injection.dart';
+import 'package:student_lecture_app/core/routes/app_router.gr.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/news_card.dart';
 import 'package:student_lecture_app/presentation/widgets/organisms/ui_helper.dart';
 
@@ -43,11 +44,19 @@ class NewsPopularPage extends StatelessWidget {
                       (response) => SliverList.builder(
                         itemBuilder: (context, index) {
                           final article = response[index];
-                          return NewsCard(
-                            title: article.title,
-                            imgSrc: article.multimediaConverted,
-                            desc:
-                                '${article.byline} \u2022 ${article.publishedDateConverted}',
+                          return InkWell(
+                            child: NewsCard(
+                              title: article.title,
+                              imgSrc: article.multimediaConverted,
+                              desc:
+                                  '${article.byline} \u2022 ${article.publishedDateConverted}',
+                            ),
+                            onTap: () => AutoRouter.of(context).push(
+                              NewsDetailRoute(
+                                urlString: article.url,
+                                title: article.title,
+                              ),
+                            ),
                           );
                         },
                         itemCount: response.length,
