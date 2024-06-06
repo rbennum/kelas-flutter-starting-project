@@ -25,109 +25,120 @@ class NewsPage extends StatelessWidget {
             appBar: AppBar(
               title: const Text("News App"),
             ),
-            body: Padding(
-              padding: UIHelper.padding(horizontal: 20),
-              child: CustomScrollView(
-                controller: ScrollController(),
-                slivers: <Widget>[
-                  SliverToBoxAdapter(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const HeadlineNews(
-                          title: "Top Stories",
-                          subtitle: "Top stories from all time",
-                        ),
-                        UIHelper.verticalSpace(10),
-                        InkWell(
-                          onTap: () => AutoRouter.of(context).push(
-                            const NewsTopStorySectionRoute(),
-                          ),
-                          child: Container(
-                            padding: UIHelper.padding(all: 10),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: ColorConstant.primary),
-                              borderRadius:
-                                  UIHelper.borderRadiusCircular(all: 8),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Go to Categories Section",
-                                  style: context.textTheme.labelSmall?.copyWith(
-                                    color: ColorConstant.primary,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.double_arrow_rounded,
-                                  size: UIHelper.setSp(20),
-                                  color: ColorConstant.primary,
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+            body: RefreshIndicator(
+              onRefresh: () async {
+                context.read<NewsMostPopularCubit>().getMostPopular();
+              },
+              child: Padding(
+                padding: UIHelper.padding(horizontal: 20),
+                child: CustomScrollView(
+                  controller: ScrollController(),
+                  physics: const AlwaysScrollableScrollPhysics(
+                    parent: BouncingScrollPhysics(),
                   ),
-                  SliverPadding(
-                    padding: UIHelper.padding(top: 10),
-                    sliver: SliverToBoxAdapter(
-                      child: HeadlineNews(
-                        title: "Most Popular Articles",
-                        subtitle: "Top articles from last week",
-                        onTap: () => AutoRouter.of(context).push(
-                          const NewsPopularRoute(),
+                  slivers: <Widget>[
+                    SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const HeadlineNews(
+                            title: "Top Stories",
+                            subtitle: "Top stories from all time",
+                          ),
+                          UIHelper.verticalSpace(10),
+                          InkWell(
+                            onTap: () => AutoRouter.of(context).push(
+                              const NewsTopStorySectionRoute(),
+                            ),
+                            child: Container(
+                              padding: UIHelper.padding(all: 10),
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: ColorConstant.primary),
+                                borderRadius:
+                                    UIHelper.borderRadiusCircular(all: 8),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Go to Categories Section",
+                                    style:
+                                        context.textTheme.labelSmall?.copyWith(
+                                      color: ColorConstant.primary,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.double_arrow_rounded,
+                                    size: UIHelper.setSp(20),
+                                    color: ColorConstant.primary,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SliverPadding(
+                      padding: UIHelper.padding(top: 10),
+                      sliver: SliverToBoxAdapter(
+                        child: HeadlineNews(
+                          title: "Most Popular Articles",
+                          subtitle: "Top articles from last week",
+                          onTap: () => AutoRouter.of(context).push(
+                            const NewsPopularRoute(),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SliverPadding(
-                    padding: UIHelper.padding(top: 10),
-                    sliver:
-                        BlocBuilder<NewsMostPopularCubit, NewsMostPopularState>(
-                      builder: (context, state) {
-                        return state.responseOption.fold(
-                          () => state.isLoading
-                              ? SliverFillRemaining(
-                                  child: UIHelper.loading(),
-                                )
-                              : const SliverToBoxAdapter(
-                                  child: SizedBox.shrink(),
+                    SliverPadding(
+                      padding: UIHelper.padding(top: 10),
+                      sliver: BlocBuilder<NewsMostPopularCubit,
+                          NewsMostPopularState>(
+                        builder: (context, state) {
+                          return state.responseOption.fold(
+                            () => state.isLoading
+                                ? SliverFillRemaining(
+                                    child: UIHelper.loading(),
+                                  )
+                                : const SliverToBoxAdapter(
+                                    child: SizedBox.shrink(),
+                                  ),
+                            (response) => response.fold(
+                              (failure) => failure.when(
+                                fromServerSide: (val) => SliverFillRemaining(
+                                  child: Text(val),
                                 ),
-                          (response) => response.fold(
-                            (failure) => failure.when(
-                              fromServerSide: (val) => SliverFillRemaining(
-                                child: Text(val),
+                              ),
+                              (response) => SliverList.builder(
+                                itemBuilder: (context, index) {
+                                  final article = response[index];
+                                  return InkWell(
+                                    child: NewsCard(
+                                      title: article.title,
+                                      imgSrc: article.multimediaConverted,
+                                      desc:
+                                          '${article.byline} \u2022 ${article.publishedDateConverted}',
+                                    ),
+                                    onTap: () => AutoRouter.of(context).push(
+                                      NewsDetailRoute(
+                                        urlString: article.url,
+                                        title: article.title,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                itemCount: 3,
                               ),
                             ),
-                            (response) => SliverList.builder(
-                              itemBuilder: (context, index) {
-                                final article = response[index];
-                                return InkWell(
-                                  child: NewsCard(
-                                    title: article.title,
-                                    imgSrc: article.multimediaConverted,
-                                    desc:
-                                        '${article.byline} \u2022 ${article.publishedDateConverted}',
-                                  ),
-                                  onTap: () => AutoRouter.of(context).push(
-                                    NewsDetailRoute(
-                                      urlString: article.url,
-                                      title: article.title,
-                                    ),
-                                  ),
-                                );
-                              },
-                              itemCount: 3,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                ],
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           );
