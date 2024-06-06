@@ -40,6 +40,11 @@ class NewsCard extends StatelessWidget {
                     width: UIHelper.setSp(70),
                     height: UIHelper.setSp(70),
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, trace) => SizedBox(
+                      height: UIHelper.setHeight(70),
+                      width: UIHelper.setWidth(70),
+                      child: const Placeholder(),
+                    ),
                   ),
                 ),
                 UIHelper.horizontalSpace(10),

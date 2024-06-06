@@ -39,7 +39,7 @@ class SplashPage extends StatelessWidget {
       SplashItem(
         "News App",
         "API calling using free source from NYTimes",
-        () {},
+        () => AutoRouter.of(context).push(const NewsRoute()),
       ),
     ];
 
