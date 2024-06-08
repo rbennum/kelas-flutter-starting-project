@@ -19,37 +19,51 @@ class CounterPage extends StatelessWidget {
 }
 
 class CounterView extends StatelessWidget {
+  static const keyFABIncrement = Key("fab_increment");
+  static const keyFABDecrement = Key("fab_decrement");
+  static const keyTextCounter = Key("text_counter");
+
   const CounterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Counter App"),
+      appBar: AppBar(
+        title: const Text("Counter App"),
+      ),
+      body: Center(
+        child: BlocBuilder<CounterCubit, CounterState>(
+          builder: (context, state) {
+            return Text(
+              state.entity.counter.toString(),
+              key: keyTextCounter,
+            );
+          },
         ),
-        body: Center(
-          child: BlocBuilder<CounterCubit, CounterState>(
-            builder: (context, state) {
-              return Text(state.entity.counter.toString());
+      ),
+      floatingActionButton: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: () {
+              context.read<CounterCubit>().increment;
             },
+            heroTag: null,
+            key: keyFABIncrement,
+            child: const Icon(Icons.add),
           ),
-        ),
-        floatingActionButton: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-              onPressed: () => context.read<CounterCubit>().increment,
-              heroTag: null,
-              child: const Icon(Icons.add),
-            ),
-            UIHelper.verticalSpace(10),
-            FloatingActionButton(
-              onPressed: () => context.read<CounterCubit>().decrement,
-              heroTag: null,
-              child: const Icon(Icons.remove),
-            ),
-          ],
-        ));
+          UIHelper.verticalSpace(10),
+          FloatingActionButton(
+            onPressed: () {
+              context.read<CounterCubit>().decrement;
+            },
+            heroTag: null,
+            key: keyFABDecrement,
+            child: const Icon(Icons.remove),
+          ),
+        ],
+      ),
+    );
   }
 }
